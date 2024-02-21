@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import userService from '../services/user'
 import CreatePost from './CreatePost';
-import postService from '../services/post'
+import getPost from '../services/getPost';
+// import createPost from '../services/createPost';
 // import getUser from '../services/user'
 
 function Dashbord() {
@@ -11,6 +12,9 @@ function Dashbord() {
   const posts = useSelector(state => state.posts)
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const [viewpost, setViewpost] = useState([])
+  // console.log(viewpost)
 
   useEffect(() => {
 
@@ -31,14 +35,23 @@ function Dashbord() {
       })
 
 
-    postService.getPost()
-      .then(posts => {
-        console.log(posts)
+    // createPost.getPost()
+    //   .then(posts => {
+    //     console.log(posts)
 
-        dispatch({
-          type: 'SET_POSTS',
-          payload: posts
-        })
+    //     dispatch({
+    //       type: 'SET_POSTS',
+    //       payload: posts
+    //     })
+    //   })
+
+  }, [])
+
+  useEffect(() => {
+    getPost()
+      .then(posts => {
+        // console.log(posts)
+        setViewpost(posts)
       })
   }, [])
 
@@ -66,8 +79,11 @@ function Dashbord() {
           <h3>feed your post</h3>
           <ul>
             {
-              posts.posts && posts.posts.map(post => {
-                return <li key={post._id}>{post.title}</li>
+              // posts.posts && posts.posts.map(post => {
+              //   return <li key={post._id}>{post.title}</li>
+              // })
+              viewpost && viewpost.map((post) => {
+                console.log(post);
               })
             }
           </ul>

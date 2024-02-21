@@ -1,7 +1,11 @@
 import axios from "axios"
-const isDeplayed = true
 
-const baseURL = isDeplayed ? 'http://localhost:3001/api' : 'https://socialmedia1-xs6e.onrender.com/'
+
+const baseURL = 'https://social-media-be-986j.onrender.com/api'
+
+// http://localhost:3001/api
+
+// https://social-media-be-986j.onrender.com/
 
 const authInstance = axios.create({
     baseURL: baseURL,

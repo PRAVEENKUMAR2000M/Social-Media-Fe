@@ -4,7 +4,7 @@ import instance from "./instance"
 const getPost = async () => {
     try {
         console.log('fetching posts')
-        const response = await instance.productedInstance.get('/posts')
+        const response = await instance.productedInstance.get('/posts/getpost')
         if (response.data.posts) {
             return response.data.posts
         }
@@ -30,23 +30,7 @@ const getPost = async () => {
 
 
 
-const createPost = async () => {
-    try {
-        console.log('post created successfully')
-        const response = await instance.productedInstance.post('/posts/create')
-        console.log( response.data)
-        if (response.data) {
-            
-            return response.data
-        } else {
-            return null
-        }
-    } catch (error) {
-        console.log('error creating the data', error)
-    }
-}
 
-export default {
-    getPost,
-    createPost
-}
+
+export default getPost
+    
